@@ -1,0 +1,2 @@
+model_file,image_file,text,text_short,text_medium
+'lora model path','lora image path','text of iamge','text of iamge','text of iamge'
