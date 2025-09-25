@@ -19,9 +19,8 @@ from utils import LoRA_State_dicts_Decomposition
 class LoraMergerNoCross(torch.nn.Module):
     def __init__(self, dim, w=0.512):
         super().__init__()
-        self.weight_base = torch.nn.Parameter(torch.randn((dim,)))
+
         self.weight_lora = torch.nn.Parameter(torch.randn((dim,)))
-        # self.weight_cross = torch.nn.Parameter(torch.randn((dim,)))
         self.weight_out = torch.nn.Parameter(torch.ones((dim,)) * w)
         self.bias = torch.nn.Parameter(torch.randn((dim,)))
         self.activation = torch.nn.Sigmoid()
@@ -32,8 +31,7 @@ class LoraMergerNoCross(torch.nn.Module):
         norm_base_output = self.norm_base(base_output)
         norm_lora_outputs = self.norm_lora(lora_outputs)
         gate = self.activation(
-            norm_base_output * self.weight_base \
-            + norm_lora_outputs * self.weight_lora \
+            norm_lora_outputs * self.weight_lora \
             + self.bias
         )
         
@@ -44,7 +42,7 @@ class LoraMergerNobase(torch.nn.Module):
     def __init__(self, dim, w=0.512):
         super().__init__()
 
-        self.weight_base = torch.nn.Parameter(torch.randn((dim,)))
+
         self.weight_lora = torch.nn.Parameter(torch.randn((dim,)))
         self.weight_cross = torch.nn.Parameter(torch.randn((dim,)))
 
@@ -69,7 +67,7 @@ class LoraMergerNoLoRA(torch.nn.Module):
     def __init__(self, dim, w=0.512):
         super().__init__()
         self.weight_base = torch.nn.Parameter(torch.randn((dim,)))
-        # self.weight_lora = torch.nn.Parameter(torch.randn((dim,)))
+
         self.weight_cross = torch.nn.Parameter(torch.randn((dim,)))
         self.weight_out = torch.nn.Parameter(torch.ones((dim,)) * w)
         self.bias = torch.nn.Parameter(torch.randn((dim,)))
@@ -93,7 +91,7 @@ class LoraMergerNoLoRA(torch.nn.Module):
 
 merger_class= {
     'no_base': LoraMergerNobase,
-    'no_lora': LoraMergerNoLoRA,
+    'no_cross': LoraMergerNoCross,
 
 }
 
