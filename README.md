@@ -1,6 +1,6 @@
 # AutoLoRA: Automatic LoRA Retrieval and Fine-Grained Gated Fusion for Text-to-Image Generation
 
-Our code is built on [Diffsynth-Studio](https://github.com/modelscope/DiffSynth-Studio)
+<!-- Our code is built on [Diffsynth-Studio](https://github.com/modelscope/DiffSynth-Studio) -->
 
 ## Our Framework
 ![](asset/method.jpg)
