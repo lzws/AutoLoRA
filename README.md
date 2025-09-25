@@ -14,6 +14,6 @@ Our code is built on [Diffsynth-Studio](https://github.com/modelscope/DiffSynth-
 ![](asset/res-3.jpg)
 
 ## Use
-training scripes: `train_retriever.py` and `train_merger.py`
+train scripts: `train_retriever.py` and `train_merger.py`
 
-test scripes: `test_retriever.py` and `test_merger.py`
+test scripts: `test_retriever.py` and `test_merger.py`
